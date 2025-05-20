@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ hero.headline|default:"HamiNavodayaHo - Connect, Chat, Celebrate!" }}</title>
+  <link href="{% static 'website/css/styles.css' %}" rel="stylesheet" />
+  <script src="{% static 'website/js/scripts.js' %}" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 right-0 bg-gray-900 z-50 shadow-lg">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <img src="{% static 'website/image/haminavodayaho.svg' %}" alt="Logo" class="w-10 h-10" />
+        <h1 class="text-2xl md:text-3xl font-bold text-white">HamiNavodayaHo</h1>
+      </div>
+      <nav>
+        <ul class="hidden md:flex space-x-6">
+            <li><a href="#about" class="hover:text-gray-300">About</a></li>
+            <li><a href="#features" class="hover:text-gray-300">Features</a></li>
+            <li><a href="#screenshots" class="hover:text-gray-300">Screenshots</a></li>
+            <li><a href="#download" class="hover:text-gray-300">Download</a></li>
+          </li><a href="#contact" class="hover:text-gray-300">Contact</a></li>
+        </ul>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="menu-toggle" class="text-white focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-4 pb-4">
+      <ul class="flex flex-col space-y-4">
+        <li><a href="#about" class="hover:text-gray-300">About</a></li>
+        <li><a href="#features" class="hover:text-gray-300">Features</a></li>
+        <li><a href="#screenshots" class="hover:text-gray-300">Screenshots</a></li>
+        <li><a href="#download" class="hover:text-gray-300">Download</a></li>
+      </li><a href="#contact" class="hover:text-gray-300">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="pt-24 space-y-24">
+    <!-- Hero -->
+    <section class="text-center container mx-auto px-4 py-20 fade-in">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">{{ hero.headline }}</h2>
+      <p class="text-gray-300 text-lg mb-8">{{ hero.subtext }}</p>
+      <a href="#download" class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-purple-500 hover:to-pink-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg">Download App</a>
+    </section>
+    <!-- About -->
+    <section id="about" class="bg-gray-800 py-16 fade-in">
+      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-3xl font-semibold mb-6 text-pink-400">{{ about.heading }}</h3>
+          <p class="text-gray-300 text-lg">{{ about.description }}</p>
+        </div>
+        {% if about.image %}
+        <img src="{{ about.image.url }}" alt="App Preview" class="rounded-lg shadow-lg" style ="width :50%" />
+        {% endif %}
+      </div>
+    </section>
+    <!-- Features -->
+    <section id="features" class="py-16 fade-in">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-semibold mb-12">Key Features</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          {% for feature in features %}
+          <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+            <h4 class="text-xl font-semibold mb-4">{{ feature.title }}</h4>
+            <p class="text-gray-300">{{ feature.description }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section id="screenshots" class="bg-gray-800 py-16 fade-in">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-semibold mb-12">App Screenshots</h2>
+        <div class="flex flex-wrap justify-center gap-8">
+          {% for ss in screenshots %}
+          <img src="{{ ss.image.url }}" alt="{{ ss.alt_text }}" class="rounded-lg shadow-md w-[140px] sm:w-[180px] md:w-[200px]" />
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Download -->
+    <section id="download" class="py-16 fade-in text-center">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-semibold mb-8">Download Now!</h2>
+        <p class="text-gray-300 text-lg mb-6">  Be among the first to experience the future of social connection. Join thousands already gearing up to share, connect, and celebrate on HamiNavodayaHo. Available now on your favorite app stores!</p>
+        <a href="{% url 'download' %}" class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-blue-400 hover:to-green-500 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-lg">Click to Download </a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-gray-800 py-16 fade-in">
+        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+          <div class="hidden md:block">
+            <img src="{% static 'website/image/contact-us.jpg' %}" alt="Contact Us" class="rounded-lg shadow-lg w-full max-w-md mx-auto mt-8" />
+          </div>
+          <div class="p-6 rounded-lg">
+            <h2 class="text-3xl font-semibold mb-6">Contact Us</h2>
+            <form action="{% url 'handle_contact_form' %}" method="POST">
+              {% csrf_token %}
+              <div class="mb-4">
+                <input type="text" id="full_name" name="full_name" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700" placeholder="Full Name">
+              </div>
+              <div class="mb-4">
+                <input type="email" id="email" name="email" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700" placeholder="E-mail">
+              </div>
+              <div class="mb-4">
+                <textarea id="message" name="message" rows="4" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700" placeholder="Message"></textarea>
+              </div>
+              <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline">Contact Us</button>
+            </form>
+            <div class="mt-6">
+              <p class="text-gray-300">Contact: <a href="mailto:hi@green.com" class="text-indigo-400 hover:underline">help@haminavodayaho.in</a></p>
+              <p class="text-gray-300">Based in: Basti, Uttar Pradesh, India -272151</p>
+            </div>
+          </div>
+        </div>
+      </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 py-6 text-center text-gray-400 text-sm">
+    &copy; 2025 HamiNavodayaHo. All rights reserved.
+  </footer>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .otp-box {
+            background-color: #f0f0f0;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-align: center;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
+        .company-info {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>OTP Verification</h2>
+        <p>Thank you for using <b>HamiNavodayaHo</b>! To continue, please enter the following One-Time Password (OTP) in the app or website:</p>
+
+        <div class="otp-box">{{otp}}</div>
+
+        <p>This OTP is valid for the next 10 minutes. Do not share this code with anyone.</p>
+
+        <p><strong>Why did you receive this?</strong> Someone (hopefully you) is trying to create/access your HamiNavodayaHo account. Use the code above to confirm your identity.</p>
+
+        <p><strong>Your privacy matters:</strong> We never share your information without your consent. Read more in our <a href="#">Privacy Policy</a>.</p>
+
+        <div class="footer">
+            <p>If you did not request this OTP, please ignore this message. For any concerns, contact our support team.</p>
+        </div>
+
+        <div class="company-info">
+            <p><strong>HamiNavodayaHo</strong><br>
+               pryog pvt ltd.<br>
+               Email: help@haminavodayaho.in<br>
+               Phone: +91 6391348273</p>
+        </div>
+    </div>
+</body>
+</html>
